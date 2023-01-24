@@ -37,9 +37,9 @@ void invariant_mass(Char_t* InputFile, Bool_t MakeCalMap, Char_t* WhichNeutronWa
 
   Double_t Res_Pos = 0.;
   Double_t Res_Time = 0.;
-  //Double_t NeutronWall_ZOffset = 1100.; //11m
+  Double_t NeutronWall_ZOffset = 1100.; //11m
   //Double_t NeutronWall_ZOffset = 800.; //8m
-  Double_t NeutronWall_ZOffset = 1500.; //15m
+  //Double_t NeutronWall_ZOffset = 1500.; //15m
   TString NWall = "";
 
   if((TString)WhichNeutronWall=="Neuland"){
@@ -325,6 +325,8 @@ void invariant_mass(Char_t* InputFile, Bool_t MakeCalMap, Char_t* WhichNeutronWa
     //NeutronWall Analysis
     Int_t NeutronWall_Mult = NeutronWallPointArray->GetEntriesFast();
 
+    cout << "event" << endl;
+    
     for(Int_t i=0; i<NeutronWallPointArray->GetEntriesFast(); i++){
       if(NWall!="Land"){
 	NeutronWallPoint = (R3BNeulandPoint*) NeutronWallPointArray->At(i);
@@ -336,6 +338,7 @@ void invariant_mass(Char_t* InputFile, Bool_t MakeCalMap, Char_t* WhichNeutronWa
 	NeutronWallPointLand->Position(NeutronWall_Pos);
 	NeutronWall_ID = NeutronWallPointLand->GetSector();
 	NeutronWall_Time = NeutronWallPointLand->GetTime();
+	cout << NeutronWall_ID << endl;
       }
 
       Bool_t Is_New_ID = true;
